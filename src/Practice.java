@@ -64,7 +64,21 @@ public class Practice {
      * @throws NullPointerException if ages is null
      */
     public static Set<String> adults(Map<String, Integer> ages) {
-        return null;
+        if (ages == null) { // checks if map is null
+            throw new NullPointerException("ages is null");
+        }
+        Set<String> adultNames = new java.util.HashSet<>(); // creates a new hashet to store adult names
+        for (Map.Entry<String, Integer> entry : ages.entrySet()) {
+            // string name == getkey
+            // integer age == getvalue
+            // if age more and greater than 18 -> add name to adultNames
+            String name = entry.getKey(); // gets the name from the map
+            Integer age = entry.getValue(); // gets the age from the map
+            if (age >= 18) {
+                adultNames.add(name);
+            }
+        }
+        return adultNames;
     }
 
     /**
