@@ -148,7 +148,12 @@ public class Practice {
      * @return the number of levels in the tree
      */
     public static int levelCount(BinaryTreeNode<?> root) {
-        return 0;
+        // if root == null -> return 0
+        if (root == null) {
+            return 0;
+        }  
+        // return 1 + max of left and right subtree level count
+        return 1 + Math.max(levelCount(root.left), levelCount(root.right));
     }
 
 
@@ -176,7 +181,16 @@ public class Practice {
      * @return the sum of the nodes at the given level
      */
     public static int sumAtLevel(BinaryTreeNode<Integer> root, int level) {
-        return 0;
+        // if root == null or level is < 1 -> return 0
+        if (root == null || level < 1) {
+            return 0;
+        }
+        // if level == 1 -> return root.data
+        if (level == 1) {
+            return root.data;
+        }
+        // return sum (root.left, level - 1) + sum(root.right, level - 1)
+        return sumAtLevel(root.left, level - 1) + sumAtLevel(root.right, level - 1);
     }
 
 
